@@ -11,7 +11,7 @@ export function ProjectContent({ name, icons, content }) {
             {name}
           </h1>{" "}
           <br />
-          <p className="text-xl text-dark-cyan">{content.description}</p>
+          <p className="text-xl text-normal-cyan">{content.description}</p>
         </div>
         <img
           className="basis-5/12 w-2/5"
@@ -20,7 +20,7 @@ export function ProjectContent({ name, icons, content }) {
         />
         <div className="flex basis-1/12 justify-center p-2">
           {hovered.bool === true && (
-            <div className="text-dark-cyan absolute right-1 -top-5 p-1 bg-normal-gray rounded-md drop-shadow-lg">
+            <div className="text-normal-cyan absolute right-1 -top-5 p-1 bg-normal-gray rounded-md drop-shadow-lg">
               {icons[hovered.index].text}
             </div>
           )}
