@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { animate, delay, motion, stagger } from "framer-motion";
 import { Navbar } from "../components/navbar";
 import { HomeContent } from "../components/homeContent";
 import { ProjectContent } from "../components/projectContent";
@@ -9,6 +10,36 @@ import os_w from "../assets/icons/os-w.png";
 import DASHYGON1 from "../assets/DASHYGON/DASHYGON-1.png";
 import DASHYGON2 from "../assets/DASHYGON/DASHYGON-2.png";
 import DASHYGON3 from "../assets/DASHYGON/DASHYGON-3.png";
+
+const container = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const slideInLeft = {
+  // Startzustand (Initial State)
+  initial: {
+    x: -2000, // Starte 100px links außerhalb des Bildschirms
+    opacity: 0,
+  },
+  // Endzustand (Animate State - wird beim Mounten erreicht)
+  animate: {
+    x: 0,
+    opacity: 1,
+  },
+};
+
+const slideInLeftTransition = {
+  default: {
+    type: "tween",
+    duration: 0.4,
+    ease: "circOut",
+  },
+  opacity: { type: "tween", duration: 0.2, ease: "easeOut " },
+};
 
 export function Home() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -69,7 +100,7 @@ export function Home() {
       ],
     },
     {
-      id: 1,
+      id: 2,
       name: "DASHYGON",
       link: "https://palmonapple.itch.io/dashygon",
       icons: [
@@ -129,16 +160,25 @@ export function Home() {
       <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <main className="flex-grow">
         {currentPage === "Home" && <HomeContent />}
-        {currentPage === "Projects" &&
-          projects.map((project) => (
-            <ProjectContent
-              name={project.name}
-              link={project.link}
-              icons={project.icons}
-              content={project.content}
-              images={project.images}
-            />
-          ))}
+        {currentPage === "Projects" && (
+          <motion.div variants={container} initial="initial" animate="animate">
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                variants={slideInLeft}
+                transition={slideInLeftTransition}
+              >
+                <ProjectContent
+                  name={project.name}
+                  link={project.link}
+                  icons={project.icons}
+                  content={project.content}
+                  images={project.images}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </main>
       <Footer />
     </div>
