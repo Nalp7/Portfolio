@@ -39,11 +39,11 @@ export function Footer() {
                         src={element.icon}
                         alt={element.text}
                         title={element.text}
-                        className="px-3 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
+                        className="px-1 min-w-[30px] lg:px-3 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
                       />
                     </a>
                   </span>
-                  <span className="last:hidden"> • </span>
+                  <span className="hidden lg:block last:hidden">•</span>
                 </>
               ))}
             </div>

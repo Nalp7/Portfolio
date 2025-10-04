@@ -34,15 +34,14 @@ export function Navbar({ currentPage, setCurrentPage }) {
   }
 
   return (
-    <div className="bg-dark-gray sticky top-0 drop-shadow-lg">
-      <div className="space-x-8 grid grid-cols-3 items-center w-full">
+    <div className="bg-dark-gray sticky top-[-1px] drop-shadow-lg z-20">
+      <div className="space-x-8 grid grid-cols-5 md:grid-cols-3 items-center w-full">
         <img
           alt="NalpDev"
           src={logoVerticalColor}
-          width="60px"
-          className="m-2 ml-5 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.2)] hover:scale-100 hover:cursor-default transition-transform duration-1000"
+          className="w-10 md:w-15 ml-2 md:ml-5 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.2)] hover:cursor-default transition-transform duration-1000"
         />
-        <div className="flex justify-center m-0">
+        <div className="flex justify-center m-0 col-span-3 md:col-span-1">
           {navItems.map((item) => (
             <a
               onClick={() => setCurrentPage(item.name)}
@@ -50,7 +49,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
                 item.name === currentPage
                   ? "text-white drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)]"
                   : "text-normal-cyan hover:text-normal-cyan",
-                "ml-2 mr-2 p-6 rounded-md hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
+                "mx-1 md:mx-2 md:p-6 rounded-md hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
               )}
               href={item.path}
             >
@@ -58,11 +57,11 @@ export function Navbar({ currentPage, setCurrentPage }) {
             </a>
           ))}
         </div>
-        <div className="items-center flex">
-          <div className="border-l border-white h-12 mx-4" />
+        <div className="items-center flex justify-self-end col-span-1">
+          <div className="md:border-l border-white h-12 md:mx-4" />
           {navLinks.map((link) => (
             <a
-              className="-m-2 p-6 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
+              className="-m-2 p-2 md:p-6 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
               href={link.path}
               target="_blank"
             >
