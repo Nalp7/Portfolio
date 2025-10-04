@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function HomeContent() {
   return (
-    <div className="flex flex-col items-center h-screen">
+    <div className="flex flex-col items-center">
       <h1 className="text-4xl font-bold text-normal-cyan mt-10">
         Welcome to My Portfolio!
       </h1>

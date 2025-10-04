@@ -1,23 +1,126 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import link_w from "../assets/icons/link-w.svg";
+import { twMerge } from "tailwind-merge";
+import dot_w from "../assets/icons/dot-w.png";
 
-export function ProjectContent({ name, icons, content }) {
+export function ProjectContent({ name, link, icons, content, images }) {
   const [hovered, setHovered] = useState({ bool: false, index: -1 });
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+  };
 
   return (
     <div className="flex flex-col items-center bg-dark-gray m-10 rounded-2xl drop-shadow-lg">
-      <div className="flex flex-row p-5 w-full justify-between">
+      <div className="flex flex-row p-5 w-full ">
         <div className="basis-6/12">
-          <h1 className="font-extrabold text-5xl text-normal-cyan flex-1">
-            {name}
-          </h1>{" "}
+          <h1 className="font-extrabold text-5xl text-normal-cyan">
+            <span className="flex flex-row">
+              {name}
+              <a href={link} target="_blank" className="pl-3">
+                <img
+                  src={link_w}
+                  alt="Link"
+                  title="itch.io link"
+                  className="w-[95%] hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150 will-change-transform"
+                />
+              </a>
+            </span>
+          </h1>
+
           <br />
           <p className="text-xl text-normal-cyan">{content.description}</p>
         </div>
-        <img
-          className="basis-5/12 w-2/5"
-          src={content.image}
-          alt="DASHYGON Main Menu"
-        />
+        <div className="relative w-full basis-5/12">
+          <div className="relative h-full overflow-hidden rounded-lg">
+            {/* Carousel Body */}
+            <div className="h-3/4">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={twMerge(
+                    "absolute inset-0 transition-opacity duration-700 ease-in-out",
+                    index === activeIndex ? "opacity-100" : "opacity-0"
+                  )}
+                >
+                  <img
+                    src={image.image}
+                    className="block w-full h-full object-cover rounded-2xl"
+                    alt={image.alt}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Carousel Pagination */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 h-1/4 flex items-center justify-center gap-2 pt-2 overflow-x-auto">
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  src={dot_w}
+                  onClick={() => setActiveIndex(index)}
+                  className={twMerge(
+                    "w-[5%] -mb-10 aspect-video object-cover rounded-md cursor-pointer transition-opacity",
+                    index === activeIndex
+                      ? "opacity-100"
+                      : "opacity-30 hover:opacity-75"
+                  )}
+                  alt={image.alt}
+                />
+              ))}
+            </div>
+
+            {/* Carousel Controls */}
+            <button
+              type="button"
+              className="absolute top-1/2 left-0 z-20 -translate-y-1/2 ml-2 p-2 bg-black/30 hover:bg-black/50 rounded-full hover:cursor-pointer hover:scale-110 transition-transform duration-150 will-change-transform"
+              onClick={handlePrev}
+            >
+              <svg
+                className="w-4 h-4 text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 1 1 5l4 4"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="absolute top-1/2 right-0 z-20 -translate-y-1/2 mr-2 p-2 bg-black/30 hover:bg-black/50 rounded-full hover:cursor-pointer hover:scale-110 transition-transform duration-150 will-change-transform"
+              onClick={handleNext}
+            >
+              <svg
+                className="w-4 h-4 text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <div className="flex basis-1/12 justify-center p-2">
           {hovered.bool === true && (
             <div className="text-normal-cyan absolute right-1 -top-5 p-1 bg-normal-gray rounded-md drop-shadow-lg">
