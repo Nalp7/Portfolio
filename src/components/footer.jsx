@@ -23,11 +23,11 @@ export function Footer() {
 
   return (
     <div className="flex justify-center m-0 bg-dark-gray p-5">
-      <div className="text-dark-cyan justify-center text-center w-[175%]">
-        <div className="text-center border-b-1 border-dark-cyan pb-3 w-[50%] justify-self-center">
+      <div className="flex flex-col items-center text-dark-cyan text-center">
+        <div className="text-center border-b-1 border-dark-cyan pb-3 w-full">
           <h1 className="font-extrabold">NalpDev</h1>
         </div>
-        <div className="flex flex-row justify-center justify-self-center mt-3 w-[50%] pb-3">
+        <div className="flex flex-col md:flex-row justify-center mt-3 pb-3">
           <div className="flex flex-col text-center items-center mx-5">
             <h2 className="font-bold">Links</h2>
             <div className="flex flex-row mt-2 items-center">

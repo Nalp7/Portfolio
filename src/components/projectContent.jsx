@@ -51,7 +51,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
                   >
                     <img
                       src={image.image}
-                      className="block w-fit h-fit object-cover rounded-2xl"
+                      className="block w-auto h-auto object-cover rounded-2xl"
                       alt={image.alt}
                     />
                   </div>
