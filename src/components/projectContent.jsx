@@ -125,7 +125,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
           </div>
           <div className="flex justify-center p-2 mt-2 md:mt-3">
             {hovered.bool === true && (
-              <div className="text-normal-cyan text-sm lg:text-base absolute right-auto bottom-20 p-1 bg-normal-gray rounded-md drop-shadow-lg">
+              <div className="z-30 text-normal-cyan text-sm lg:text-base absolute right-auto bottom-20 p-1 bg-normal-gray rounded-md drop-shadow-lg">
                 {icons[hovered.index].text}
               </div>
             )}

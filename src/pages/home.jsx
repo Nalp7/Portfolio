@@ -71,16 +71,18 @@ export function Home() {
             <br className="hidden md:block" />
             <br />
             <p className="text-sm">
-              Check out this video: <br />
+              Check out <span></span>
               <a
-                href="https://www.youtube.com/watch?v=IhhNnwX03Rc&t=109s"
+                href="https://www.youtube.com/watch?v=IhhNnwX03Rc"
                 target="_blank"
                 className="underline hover:text-white"
               >
-                https://www.youtube.com/watch?v=IhhNnwX03Rc&t=109s
+                this video
               </a>
             </p>
-            <p className="font-light italic text-xs">video is not made by me</p>
+            <p className="font-light italic text-xs">
+              *video is not made by me*
+            </p>
           </>
         ),
       },
@@ -125,16 +127,18 @@ export function Home() {
             <br className="hidden md:block" />
             <br />
             <p className="text-sm">
-              Check out this video: <br />
+              Check out <span></span>
               <a
-                href="https://www.youtube.com/watch?v=IhhNnwX03Rc&t=109s"
+                href="https://www.youtube.com/watch?v=IhhNnwX03Rc"
                 target="_blank"
                 className="underline hover:text-white"
               >
-                https://www.youtube.com/watch?v=IhhNnwX03Rc&t=109s
+                this video
               </a>
             </p>
-            <p className="font-light italic text-xs">video is not made by me</p>
+            <p className="font-light italic text-xs">
+              *video is not made by me*
+            </p>
           </>
         ),
       },
