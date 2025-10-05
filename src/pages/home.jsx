@@ -60,7 +60,7 @@ export function Home() {
         {
           id: 2,
           name: "Operating System",
-          text: "Available for browser on my itch.io Page or Windows(Browser version is laggy. Download recommended)",
+          text: "Available for browser on my itch.io page or Windows(Browser version is laggy. Download recommended)",
           icon: os_w,
         },
       ],
@@ -116,7 +116,7 @@ export function Home() {
         {
           id: 2,
           name: "Operating System",
-          text: "Available for browser on my itch.io Page or Windows(Browser version is laggy. Download recommended)",
+          text: "Available for browser on my itch.io page or Windows(Browser version is laggy. Download recommended)",
           icon: os_w,
         },
       ],
