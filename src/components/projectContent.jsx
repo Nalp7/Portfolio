@@ -19,22 +19,22 @@ export function ProjectContent({ name, link, icons, content, images }) {
     <div className="flex flex-col items-center bg-dark-gray m-4 md:m-10 rounded-2xl drop-shadow-lg z-10">
       <div className="flex flex-col justify-center text-center md:flex-row p-2 md:p-5 w-full ">
         <div className="md:basis-1/2 text-center md:text-left">
-          <h1 className="font-extrabold text-4xl md:text-5xl text-normal-cyan">
+          <h1 className="font-extrabold text-4xl md:text-5xl text-light-purple">
             <span className="inline-flex">
               {name}
               <a href={link} target="_blank" className="pl-3">
                 <img
                   src={link_w}
                   alt="Link"
-                  title="itch.io link"
-                  className="w-6 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150 will-change-transform"
+                  title="Project link"
+                  className="w-6 hover:scale-110 transition-transform duration-150 will-change-transform"
                 />
               </a>
             </span>
           </h1>
 
           <br className="hidden md:block" />
-          <p className="md:text-xl text-normal-cyan">{content.description}</p>
+          <p className="md:text-xl text-light-blue">{content.description}</p>
         </div>
         <div className="md:basis-1/2 flex flex-col md:ml-5">
           <div className="mt-6 md:mt-0">
@@ -125,7 +125,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
           </div>
           <div className="flex justify-center p-2 mt-2 md:mt-3">
             {hovered.bool === true && (
-              <div className="z-30 text-normal-cyan text-sm lg:text-base absolute right-auto bottom-20 p-1 bg-normal-gray rounded-md drop-shadow-lg">
+              <div className="z-30 text-light-blue text-sm lg:text-base absolute right-auto bottom-20 p-1 bg-normal-gray rounded-md drop-shadow-lg">
                 {icons[hovered.index].text}
               </div>
             )}
@@ -140,7 +140,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
                       onMouseLeave={() =>
                         setHovered({ bool: false, index: -1 })
                       }
-                      className="mx-5 lg:mx-10 w-10 drop-shadow-sm hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150 will-change-transform"
+                      className="mx-5 lg:mx-10 w-10 drop-shadow-sm hover:scale-110 transition-transform duration-150 will-change-transform"
                       src={icon.icon}
                       alt={icon.name}
                       title={icon.name}

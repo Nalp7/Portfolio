@@ -70,8 +70,8 @@ export function Home() {
             A two-dimensional roguelite game
             <br className="hidden md:block" />
             <br />
-            <p className="text-sm">
-              Check out <span></span>
+            <p className="">
+              Check out <span />
               <a
                 href="https://www.youtube.com/watch?v=IhhNnwX03Rc"
                 target="_blank"
@@ -126,8 +126,8 @@ export function Home() {
             A two-dimensional roguelite game
             <br className="hidden md:block" />
             <br />
-            <p className="text-sm">
-              Check out <span></span>
+            <p className="">
+              Check out <span />
               <a
                 href="https://www.youtube.com/watch?v=IhhNnwX03Rc"
                 target="_blank"

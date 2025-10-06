@@ -22,12 +22,9 @@ export function Footer() {
   });
 
   return (
-    <div className="flex justify-center m-0 bg-dark-gray p-5">
-      <div className="flex flex-col items-center text-dark-cyan text-center">
-        <div className="text-center border-b-1 border-dark-cyan pb-3 w-full">
-          <h1 className="font-extrabold">NalpDev</h1>
-        </div>
-        <div className="flex flex-col md:flex-row justify-center mt-3 pb-3">
+    <div className="flex justify-center m-0 bg-dark-gray shadow-[0_-8px_16px_rgba(0,0,0,0.05)] p-5 top-shadow-2xl">
+      <div className="flex flex-col items-center text-darker-blue text-center">
+        <div className="flex flex-col md:flex-row justify-center pb-3">
           <div className="flex flex-col text-center items-center mx-5">
             <h2 className="font-bold">Links</h2>
             <div className="flex flex-row mt-2 items-center">
@@ -39,7 +36,7 @@ export function Footer() {
                         src={element.icon}
                         alt={element.text}
                         title={element.text}
-                        className="px-1 min-w-[30px] lg:px-3 hover:drop-shadow-[0px_0px_15px_rgba(0,146,184,0.9)] hover:scale-105 transition-transform duration-150"
+                        className="px-1 min-w-[30px] lg:px-3 hover:scale-110 transition-transform duration-150"
                       />
                     </a>
                   </span>
@@ -48,7 +45,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div className="text-center items-center mx-5">
+          <div className="text-center items-center mx-5 mt-2">
             <h2 className="font-bold">Contact</h2>
             <div className="mt-2 items-center">
               <span>justg2007@gmail.com</span>
