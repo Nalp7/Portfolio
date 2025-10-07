@@ -81,63 +81,7 @@ export function Home() {
               </a>
             </p>
             <p className="font-light italic text-xs">
-              *video is not made by me*
-            </p>
-          </>
-        ),
-      },
-      images: [
-        {
-          image: DASHYGON1,
-          alt: "DASHYGON Main Menu",
-        },
-        {
-          image: DASHYGON2,
-          alt: "DASHYGON Gameplay",
-        },
-        {
-          image: DASHYGON3,
-          alt: "DASHYGON Death Screen",
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "DASHYGON",
-      link: "https://palmonapple.itch.io/dashygon",
-      icons: [
-        { id: 0, name: "Godot", text: "Game engine: Godot", icon: godot_w },
-        {
-          id: 1,
-          name: "GDScript",
-          text: "Programming language: GDScript",
-          icon: code_w,
-        },
-        {
-          id: 2,
-          name: "Operating System",
-          text: "Available for browser on my itch.io page or Windows(Browser version is laggy. Download recommended)",
-          icon: os_w,
-        },
-      ],
-      content: {
-        description: (
-          <>
-            A two-dimensional roguelite game
-            <br className="hidden md:block" />
-            <br />
-            <p className="">
-              Check out <span />
-              <a
-                href="https://www.youtube.com/watch?v=IhhNnwX03Rc"
-                target="_blank"
-                className="underline hover:text-white"
-              >
-                this video
-              </a>
-            </p>
-            <p className="font-light italic text-xs">
-              *video is not made by me*
+              video is not made by me
             </p>
           </>
         ),

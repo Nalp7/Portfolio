@@ -37,7 +37,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
   return (
     <div className="bg-dark-gray sticky top-[-1px] drop-shadow-lg z-20">
       <div className="space-x-8 grid grid-cols-5 md:grid-cols-3 items-center w-full">
-        <h1 className="ml-3 md:my-1.5 md:ml-4 text-2xl md:text-3xl leading-7 text-light-purple font-mono font-extrabold">
+        <h1 className="ml-3 md:my-1.5 md:ml-4 text-2xl md:text-3xl leading-7 text-light-blue font-mono font-extrabold">
           Jus <br />
           tus
         </h1>
@@ -48,7 +48,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
               className={classNames(
                 item.name === currentPage
                   ? "text-black bg-light-purple scale-105 md:scale-110"
-                  : "text-light-purple hover:text-light-blue hover:scale-105 md:hover:scale-110 transition-transform duration-150",
+                  : "text-light-blue hover:text-light-purple hover:scale-105 md:hover:scale-110 transition-transform duration-150",
                 "mx-1 px-2 md:mx-2 md:py-[0.3rem] md:px-5 rounded-md"
               )}
               href={item.path}

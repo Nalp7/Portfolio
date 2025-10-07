@@ -19,7 +19,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
     <div className="flex flex-col items-center bg-dark-gray m-4 md:m-10 rounded-2xl drop-shadow-lg z-10">
       <div className="flex flex-col justify-center text-center md:flex-row p-2 md:p-5 w-full ">
         <div className="md:basis-1/2 text-center md:text-left">
-          <h1 className="font-extrabold text-4xl md:text-5xl text-light-purple">
+          <h1 className="font-extrabold text-4xl md:text-6xl text-light-purple">
             <span className="inline-flex">
               {name}
               <a href={link} target="_blank" className="pl-3">
@@ -34,7 +34,7 @@ export function ProjectContent({ name, link, icons, content, images }) {
           </h1>
 
           <br className="hidden md:block" />
-          <p className="md:text-xl text-light-blue">{content.description}</p>
+          <p className="md:text-2xl text-light-blue font-light">{content.description}</p>
         </div>
         <div className="md:basis-1/2 flex flex-col md:ml-5">
           <div className="mt-6 md:mt-0">
