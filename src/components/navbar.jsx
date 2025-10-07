@@ -41,7 +41,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
           Jus <br />
           tus
         </h1>
-        <div className="flex justify-center m-0 col-span-3  items-center md:col-span-1">
+        <div className="flex justify-center m-0 col-span-3 items-center md:col-span-1">
           {navItems.map((item) => (
             <a
               onClick={() => setCurrentPage(item.name)}
