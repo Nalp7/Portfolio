@@ -44,6 +44,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
         <div className="flex justify-center m-0 col-span-3 items-center md:col-span-1">
           {navItems.map((item) => (
             <a
+              key={item.id}
               onClick={() => setCurrentPage(item.name)}
               className={classNames(
                 item.name === currentPage
@@ -61,6 +62,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
           <div className="md:border-l border-white h-12 md:mx-4" />
           {navLinks.map((link) => (
             <a
+              key={link.id}
               className="-m-2 p-2 md:p-6 hover:cursor-pointer hover:scale-110 transition-transform duration-150 will-change-transform"
               href={link.path}
               target="_blank"

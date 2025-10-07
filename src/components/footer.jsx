@@ -8,12 +8,19 @@ export function Footer() {
   const [content1, setContent1] = useState({
     icons: [
       {
+        id: 1,
         icon: linkedin_w,
         text: "LinkedIn",
         href: "https://www.linkedin.com/in/justus-grothe/",
       },
-      { icon: github_w, text: "GitHub", href: "https://github.com/Nalp7" },
       {
+        id: 2,
+        icon: github_w,
+        text: "GitHub",
+        href: "https://github.com/Nalp7",
+      },
+      {
+        id: 3,
         icon: itchio_w,
         text: "itch.io",
         href: "https://itch.io/profile/palmonapple",
@@ -29,7 +36,7 @@ export function Footer() {
             <h2 className="font-bold">Links</h2>
             <div className="flex flex-row mt-2 items-center">
               {content1.icons.map((element) => (
-                <>
+                <div key={element.id}>
                   <span>
                     <a href={element.href} target="_blank">
                       <img
@@ -41,7 +48,7 @@ export function Footer() {
                     </a>
                   </span>
                   <span className="hidden lg:block last:hidden">•</span>
-                </>
+                </div>
               ))}
             </div>
           </div>
