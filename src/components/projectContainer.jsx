@@ -54,10 +54,10 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
     >
       <div className="flex flex-col justify-center text-center p-2 w-full">
         <div className="text-center">
-          <h1 className="font-extrabold text-3xl md:text-4xl md:text-[2.4rem] text-light-purple">
+          <h1 className="font-extrabold text-3xl md:text-4xl text-light-purple">
             <span className="inline-flex">
               {name}
-              <a href={link} target="_blank" className="pl-2 lg:pl-3">
+              <a href={link} target="_blank" className="pl-2">
                 <img
                   src={link_w}
                   alt="Link"
@@ -67,7 +67,6 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
               </a>
             </span>
           </h1>
-
           <br className="hidden md:block" />
           <span className="text-light-blue font-light">
             {content.description}
@@ -177,7 +176,7 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
                       onMouseLeave={() =>
                         setHovered({ bool: false, index: -1 })
                       }
-                      className="mx-5 lg:mx-10 w-10 drop-shadow-sm hover:scale-110 transition-transform duration-150 will-change-transform"
+                      className="mx-5 w-10 drop-shadow-sm hover:scale-110 transition-transform duration-150 will-change-transform"
                       src={icon.icon}
                       alt={icon.name}
                       title={icon.name}

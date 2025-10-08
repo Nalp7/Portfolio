@@ -9,11 +9,11 @@ import itchio_w from "../assets/icons/itchio-w.svg";
 import linkedin_w from "../assets/icons/linkedin-w.svg";
 
 export function Navbar({ currentPage, setCurrentPage }) {
-  const [navItems, setNavItems] = useState([
+  const navItems = [
     { id: 1, name: "Projects", path: "#projects" },
     { id: 2, name: "About", path: "#about" },
     { id: 3, name: "Contact", path: "#contact" },
-  ]);
+  ];
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");

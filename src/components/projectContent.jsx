@@ -6,9 +6,10 @@ import os_w from "../assets/icons/os-w.png";
 import DASHYGON1 from "../assets/DASHYGON/DASHYGON-1.png";
 import DASHYGON2 from "../assets/DASHYGON/DASHYGON-2.png";
 import DASHYGON3 from "../assets/DASHYGON/DASHYGON-3.png";
+import { div } from "framer-motion/client";
 
 export function ProjectContent() {
-  const [projects, setProjects] = useState([
+  const projects = [
     {
       id: 1,
       name: "DASHYGON",
@@ -123,20 +124,30 @@ export function ProjectContent() {
         },
       ],
     },
-  ]);
+  ];
   return (
-    <>
-      {projects.map((project) => (
-        <ProjectContainer
-          key={project.id}
-          id={project.id}
-          name={project.name}
-          link={project.link}
-          icons={project.icons}
-          content={project.content}
-          images={project.images}
-        />
-      ))}
-    </>
+    <div
+      id="projects"
+      className="scroll-m-36 mb-[5vh] md:mb-[10vh] mt-[10vh] md:mt-[25vh]"
+    >
+      <h2 className="text-4xl md:text-5xl text-center mb-5 font-bold font-mono text-light-purple">
+        projects
+      </h2>
+
+      <div className="flex flex-wrap justify-center">
+        {projects.map((project) => (
+          <div key={project.id} className="min-w-[300px] w-[40vw]">
+            <ProjectContainer
+              id={project.id}
+              name={project.name}
+              link={project.link}
+              icons={project.icons}
+              content={project.content}
+              images={project.images}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
