@@ -50,11 +50,11 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
   return (
     <div
       ref={addToRefs}
-      className="flex flex-col items-center bg-dark-gray m-4 md:m-10 rounded-2xl drop-shadow-lg z-10 -translate-x-24 opacity-0 transition-all duration-1000 ease-out"
+      className="flex flex-row items-center bg-dark-gray m-4 rounded-2xl drop-shadow-lg z-10 -translate-x-24 opacity-0 transition-all duration-1000 ease-out"
     >
-      <div className="flex flex-col justify-center text-center md:flex-row p-2 md:p-5 w-full ">
-        <div className="md:basis-1/2 text-center md:text-left">
-          <h1 className="font-extrabold text-4xl md:text-[2.8rem] lg:text-5xl text-light-purple">
+      <div className="flex flex-col justify-center text-center p-2 w-full">
+        <div className="text-center">
+          <h1 className="font-extrabold text-3xl md:text-4xl md:text-[2.4rem] text-light-purple">
             <span className="inline-flex">
               {name}
               <a href={link} target="_blank" className="pl-2 lg:pl-3">
@@ -62,20 +62,20 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
                   src={link_w}
                   alt="Link"
                   title="Project link"
-                  className="w-6 hover:scale-110 transition-transform duration-150 will-change-transform"
+                  className="min-w-6 w-6 hover:scale-110 transition-transform duration-150 will-change-transform"
                 />
               </a>
             </span>
           </h1>
 
           <br className="hidden md:block" />
-          <span className="lg:text-xl text-light-blue font-light">
+          <span className="text-light-blue font-light">
             {content.description}
           </span>
         </div>
-        <div className="md:basis-1/2 flex flex-col md:ml-5">
-          <div className="mt-6 md:mt-0">
-            <div className="m-auto relative h-fit aspect-video max-w-[405px] md:max-w-full">
+        <div className="flex flex-col">
+          <div className="mt-4">
+            <div className="m-auto relative h-fit aspect-video max-w-[405px]">
               <div className="relative h-full overflow-hidden rounded-lg">
                 {/* Carousel Body */}
                 <div className="h-full">
@@ -168,10 +168,7 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
             )}
             <ul className="flex flex-row">
               {icons.map((icon) => (
-                <div
-                  key={icon.id}
-                  className="border-r-1 border-white last-of-type:border-0"
-                >
+                <div key={icon.id} className="last-of-type:border-0">
                   <li>
                     <img
                       onMouseEnter={() =>

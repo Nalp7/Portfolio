@@ -54,15 +54,21 @@ export function Footer() {
           </div>
           <div className="text-center items-center mx-5 mt-2">
             <h2 className="font-bold">Contact</h2>
-            <div className="mt-2 items-center">
-              <span>justg2007@gmail.com</span>
+            <div className="mt-2 items-center underline hover:text-white">
+              <a href="mailto:justg2007@gmail.com" target="_blank">
+                <span>justg2007@gmail.com</span>
+              </a>
             </div>
           </div>
         </div>
         <div className="flex flex-row justify-center">
           <span className="text-sm">
             Icons by{" "}
-            <a href="https://icons8.com" target="_blank" className="underline">
+            <a
+              href="https://icons8.com"
+              target="_blank"
+              className="underline hover:text-white"
+            >
               Icons8
             </a>
           </span>

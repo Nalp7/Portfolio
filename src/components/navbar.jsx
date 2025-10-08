@@ -10,24 +10,9 @@ import linkedin_w from "../assets/icons/linkedin-w.svg";
 
 export function Navbar({ currentPage, setCurrentPage }) {
   const [navItems, setNavItems] = useState([
-    { id: 1, name: "Home", path: "#" },
-    { id: 2, name: "Projects", path: "#projects" },
-    { id: 3, name: "About", path: "#about" },
-  ]);
-  const [navLinks, setNavLinks] = useState([
-    {
-      id: 1,
-      name: "LinkedIn",
-      path: "https://www.linkedin.com/in/justus-grothe/",
-      icon: linkedin_w,
-    },
-    { id: 2, name: "GitHub", path: "https://github.com/Nalp7", icon: github_w },
-    {
-      id: 3,
-      name: "itch.io",
-      path: "https://itch.io/profile/palmonapple",
-      icon: itchio_w,
-    },
+    { id: 1, name: "Projects", path: "#projects" },
+    { id: 2, name: "About", path: "#about" },
+    { id: 3, name: "Contact", path: "#contact" },
   ]);
 
   function classNames(...classes) {
@@ -37,10 +22,15 @@ export function Navbar({ currentPage, setCurrentPage }) {
   return (
     <div className="bg-dark-gray sticky top-[-1px] drop-shadow-lg z-20">
       <div className="space-x-8 grid grid-cols-5 md:grid-cols-3 items-center w-full">
-        <h1 className="ml-3 md:my-1.5 md:ml-4 text-2xl md:text-3xl leading-7 text-light-blue font-mono font-extrabold">
-          Jus <br />
-          tus
-        </h1>
+        <a
+          href="#"
+          className="justify-self-start hover:scale-105 md:hover:scale-110 transition-all duration-150"
+        >
+          <h1 className="ml-3 md:my-1.5 md:mx-4 text-2xl md:text-3xl leading-7 text-light-purple font-mono font-extrabold">
+            Jus <br />
+            tus
+          </h1>
+        </a>
         <div className="flex justify-center m-0 col-span-3 items-center md:col-span-1">
           {navItems.map((item) => (
             <a
@@ -49,19 +39,6 @@ export function Navbar({ currentPage, setCurrentPage }) {
               href={item.path}
             >
               {item.name}
-            </a>
-          ))}
-        </div>
-        <div className="items-center flex justify-self-end col-span-1">
-          <div className="md:border-l border-white h-12 md:mx-4" />
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              className="-m-2 p-2 md:p-6 hover:cursor-pointer hover:scale-110 transition-transform duration-150 will-change-transform"
-              href={link.path}
-              target="_blank"
-            >
-              <img src={link.icon} alt={link.name} title={link.name} />
             </a>
           ))}
         </div>
