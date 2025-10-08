@@ -71,6 +71,7 @@ export function ProjectContent() {
     <>
       {projects.map((project) => (
         <ProjectContainer
+          key={project.id}
           id={project.id}
           name={project.name}
           link={project.link}

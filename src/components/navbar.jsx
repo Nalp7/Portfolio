@@ -45,13 +45,7 @@ export function Navbar({ currentPage, setCurrentPage }) {
           {navItems.map((item) => (
             <a
               key={item.id}
-              onClick={() => setCurrentPage(item.name)}
-              className={classNames(
-                item.name === currentPage
-                  ? "text-black bg-light-purple scale-105 md:scale-110"
-                  : "text-light-blue hover:text-light-purple hover:scale-105 md:hover:scale-110 transition-transform duration-150",
-                "mx-1 px-2 md:mx-2 md:py-[0.3rem] md:px-5 rounded-md"
-              )}
+              className="text-light-blue hover:text-light-purple hover:scale-105 md:hover:scale-110 transition-transform duration-150 mx-1 px-2 md:mx-2 md:py-[0.3rem] md:px-5 rounded-md"
               href={item.path}
             >
               {item.name}
