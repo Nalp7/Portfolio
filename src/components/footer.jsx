@@ -29,7 +29,7 @@ export function Footer() {
   });
 
   return (
-    <div className="flex justify-center m-0 bg-dark-gray shadow-[0_-8px_16px_rgba(0,0,0,0.05)] p-5 top-shadow-2xl">
+    <div className="flex justify-center m-0 bg-dark-gray shadow-[0_-8px_16px_rgba(0,0,0,0.07)] p-5">
       <div className="flex flex-col items-center text-darker-blue text-center">
         <div className="flex flex-col md:flex-row justify-center pb-3">
           <div className="flex flex-col text-center items-center mx-5">

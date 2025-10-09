@@ -5,10 +5,10 @@ import { ArrowDown } from "./arrowDown";
 import { About } from "./about";
 import { Motivation } from "./motivation";
 import { Contact } from "./contact";
+import { Chat } from "./chat";
 import github_w from "../assets/icons/github-w.svg";
 import itchio_w from "../assets/icons/itchio-w.svg";
 import linkedin_w from "../assets/icons/linkedin-w.svg";
-import mail_w from "../assets/icons/mail-w.png";
 import html from "../assets/icons/html.png";
 import css from "../assets/icons/css.png";
 import tailwind from "../assets/icons/tailwind.png";
@@ -112,6 +112,11 @@ export function HomeContent() {
     }
   }, []);
 
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "auto";
+    }
+  }, []);
   return (
     <div className="flex flex-col items-center justify-around">
       <div
@@ -150,6 +155,18 @@ export function HomeContent() {
           className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
         >
           <ProjectContent />
+        </div>
+        <div
+          ref={addToRefs}
+          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+        >
+          <ArrowDown href="#chat" />
+        </div>
+        <div
+          ref={addToRefs}
+          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+        >
+          <Chat />
         </div>
         <div
           ref={addToRefs}
