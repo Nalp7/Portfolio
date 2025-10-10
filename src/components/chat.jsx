@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { GetAIResponse } from "/api/chatRequest.js";
 
 export function Chat() {
   const [inputValue, setInputValue] = useState("");
@@ -18,7 +19,7 @@ export function Chat() {
     setInputValue("");
     setMessageLoading(true);
 
-    const response = await getAIResponse(updatedMessages);
+    const response = await GetAIResponse(updatedMessages);
     setMessageLoading(false);
 
     const newAssistantMessage = {

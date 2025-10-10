@@ -1,4 +1,4 @@
-export default async function getAIResponse(messageHistory) {
+export async function GetAIResponse(messageHistory) {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const apiURL = "https://api.openai.com/v1/chat/completions";
 
