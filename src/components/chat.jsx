@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
-import { GetAIResponse } from "/api/chatRequest.js";
 
 export function Chat() {
   const [inputValue, setInputValue] = useState("");
@@ -19,15 +18,28 @@ export function Chat() {
     setInputValue("");
     setMessageLoading(true);
 
-    const response = await GetAIResponse(updatedMessages);
-    setMessageLoading(false);
+    try {
+      const response = await fetch("../api/chatRequest.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messageHistory: updatedMessages }),
+      });
 
-    const newAssistantMessage = {
-      id: Date.now(),
-      text: response,
-      sender: "assistant",
-    };
-    setMessages([...updatedMessages, newAssistantMessage]);
+      const data = await response.json();
+      const aiText = data.content || "Error: no response.";
+
+      const newAssistantMessage = {
+        id: Date.now(),
+        text: aiText,
+        sender: "assistant",
+      };
+
+      setMessages([...updatedMessages, newAssistantMessage]);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setMessageLoading(false);
+    }
   }
 
   useEffect(() => {
