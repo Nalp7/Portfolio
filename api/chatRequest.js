@@ -16,7 +16,7 @@ export default async function GetAIResponse(req, res) {
     const systemMessage = {
       role: "system",
       content:
-        "Adapt your language based on your conversation partner's language. ",
+        "Adapt your language based on the user's language.",
     };
 
     const response = await fetch(apiURL, {
