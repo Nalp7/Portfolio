@@ -1,3 +1,6 @@
+import OpenAI from "openai";
+const client = new OpenAI();
+
 export default async function GetAIResponse(req, res) {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
@@ -13,14 +16,14 @@ export default async function GetAIResponse(req, res) {
     const systemMessage = {
       role: "system",
       content:
-        "Adapt your language based on your conversation partner's language. ...",
+        "Adapt your language based on your conversation partner's language. ",
     };
 
     const response = await fetch(apiURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: apiKey,
       },
       body: JSON.stringify({
         model:
