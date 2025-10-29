@@ -1,6 +1,6 @@
 export default async function GetAIResponse(req, res) {
   try {
-    const apiKey = process.env.OPENAI_API_KEY; // KEIN VITE prefix!
+    const apiKey = process.env.OPENAI_API_KEY;
     const apiURL = "https://api.openai.com/v1/chat/completions";
 
     const { messageHistory } = await req.json();
