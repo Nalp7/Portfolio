@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
-import { GoogleGenAI } from "@google/genai";
 
 export function Chat() {
   const [inputValue, setInputValue] = useState("");
@@ -8,8 +7,6 @@ export function Chat() {
   const [messages, setMessages] = useState([
     { id: 1, text: "Hey! What do you want to know?", sender: "assistant" },
   ]);
-  const genAI = new GoogleGenAI({});
-
   const chatContainerRef = useRef(null);
 
   async function handleSendMessage(message) {
@@ -26,7 +23,7 @@ export function Chat() {
 
     try {
       // Hier ist die Änderung: Rufe dein eigenes Backend auf
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/api/chatRequest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +89,7 @@ export function Chat() {
         <div className="flex text-center items-center justify-center h-[12%] border-b-1 border-light-purple shadow-[0_8px_16px_rgba(0,0,0,0.07)]">
           <h1 className="text-2xl text-light-purple font-bold">chat with me</h1>
         </div>
-        <div ref={chatContainerRef} className="overflow-y-auto h-[68%] p-2">
+        <div ref={chatContainerRef} className="flex-col overflow-y-auto h-[68%] p-2">
           {messages.map((message) => (
             <div
               key={message.id}
