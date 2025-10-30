@@ -1,39 +1,37 @@
-export default async function GetAIResponse(req, res) {
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// API-Key wird sicher vom Server aus der Umgebungsvariable geladen
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+
+export default async function chatRequest(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
   try {
-    const apiKey = process.env.OPENAI_API_KEY;
-    const apiURL = "https://api.openai.com/v1/chat/completions";
+    const { history } = req.body; // Empfange den bisherigen Chatverlauf
 
-    const { messageHistory } = await req.json();
+    if (!history) {
+      return res.status(400).json({ error: 'No history provided' });
+    }
+    
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Oder dein gewünschtes Modell
 
-    const apiMessages = messageHistory.map((m) => ({
-      role: m.sender === "assistant" ? "assistant" : "user",
-      content: m.text,
-    }));
+    // ACHTUNG: Google erwartet ein bestimmtes Format für den Chatverlauf.
+    // Du musst deine `messages`-Struktur eventuell anpassen.
+    // Beispielformat: [{ role: "user", parts: [{ text: "Hallo" }] }, { role: "model", parts: [{ text: "Hi!" }] }]
+    // Hier vereinfachen wir und nehmen nur die letzte Nachricht. In einer echten App würdest du den `history`-Array umwandeln.
+    const lastUserMessage = history.findLast(m => m.sender === 'user').text;
 
-    const systemMessage = {
-      role: "system",
-      content:
-        "Adapt your language based on your conversation partner's language. ...",
-    };
+    const result = await model.generateContent(lastUserMessage);
+    const response = await result.response;
+    const text = response.text();
 
-    const response = await fetch(apiURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model:
-          "ft:gpt-4.1-nano-2025-04-14:personal:justus-portfolio-3:COrz00Oq",
-        messages: [systemMessage, ...apiMessages],
-      }),
-    });
+    // Sende die Antwort des Models zurück an das Frontend
+    res.status(200).json({ text: text });
 
-    const data = await response.json();
-
-    return res.status(200).json({ content: data.choices[0].message.content });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "Internal Server Error" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to generate content' });
   }
 }

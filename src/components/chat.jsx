@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { GoogleGenAI } from "@google/genai";
 
 export function Chat() {
   const [inputValue, setInputValue] = useState("");
@@ -7,26 +8,39 @@ export function Chat() {
   const [messages, setMessages] = useState([
     { id: 1, text: "Hey! What do you want to know?", sender: "assistant" },
   ]);
+  const genAI = new GoogleGenAI({});
+
   const chatContainerRef = useRef(null);
 
   async function handleSendMessage(message) {
     message.preventDefault();
+    if (!inputValue.trim()) return; // Verhindere leere Nachrichten
 
     const newUserMessage = { id: Date.now(), text: inputValue, sender: "user" };
-    const updatedMessages = [...messages, newUserMessage];
+    // Sende den *gesamten* bisherigen Nachrichtenverlauf für den Kontext
+    const updatedMessages = [...messages, newUserMessage]; 
+    
     setMessages(updatedMessages);
     setInputValue("");
     setMessageLoading(true);
 
     try {
-      const response = await fetch("../api/chatRequest.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messageHistory: updatedMessages }),
+      // Hier ist die Änderung: Rufe dein eigenes Backend auf
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Sende den bisherigen Verlauf an dein Backend
+        body: JSON.stringify({ history: updatedMessages }), 
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
-      const aiText = data.content || "Error: no response.";
+      const aiText = data.text || "Error: no response.";
 
       const newAssistantMessage = {
         id: Date.now(),
@@ -37,6 +51,13 @@ export function Chat() {
       setMessages([...updatedMessages, newAssistantMessage]);
     } catch (err) {
       console.error(err);
+      // Optional: Eine Fehlermeldung im Chat anzeigen
+      const errorMessage = {
+        id: Date.now(),
+        text: "Sorry, something went wrong.",
+        sender: "assistant",
+      };
+      setMessages([...updatedMessages, errorMessage]);
     } finally {
       setMessageLoading(false);
     }
