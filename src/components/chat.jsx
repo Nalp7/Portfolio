@@ -85,12 +85,11 @@ export function Chat({ toggleChat }) {
           <h1 className="text-2xl text-light-purple font-bold m-5">
             chat about me
           </h1>
-          <h1
-            onClick={toggleChat}
-            className="text-3xl text-light-blue font-bold mt-1 mr-2 cursor-pointer hover:text-light-purple"
-          >
-            ╳
-          </h1>
+          <button onClick={toggleChat}>
+            <h1 className="text-3xl text-light-blue font-bold mt-1 mr-2 cursor-pointer hover:text-light-purple">
+              ╳
+            </h1>
+          </button>
         </div>
         <div
           ref={chatContainerRef}
