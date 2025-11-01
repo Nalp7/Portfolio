@@ -2,9 +2,36 @@ import { useState, useEffect, useRef } from "react";
 import link_w from "../assets/icons/link-w.svg";
 import { twMerge } from "tailwind-merge";
 import dot_w from "../assets/icons/dot-w.png";
+import { html } from "framer-motion/client";
 
-export function ProjectContainer({ id, name, link, icons, content, images }) {
-  const [hovered, setHovered] = useState({ bool: false, index: -1 });
+export function ProjectContainer({
+  id,
+  name,
+  link,
+  icons,
+  content,
+  images,
+  togglePopup,
+}) {
+  const popupcontent = (
+    <div className="flex flex-col">
+      {icons.map((icon) => (
+        <div className="inline-flex">
+          <img
+            key={icon.id}
+            src={icon.icon}
+            alt={icon.name}
+            title={icon.name}
+            className="m-2 size-8"
+          />
+          <span className="font-light text-sm text-light-blue self-center">
+            {icon.text}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+
   const [activeIndex, setActiveIndex] = useState(0);
   const elementsToObserve = useRef([]);
 
@@ -50,7 +77,7 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
   return (
     <div
       ref={addToRefs}
-      className="flex flex-row items-center bg-dark-gray m-4 rounded-2xl drop-shadow-lg z-10 -translate-x-24 opacity-0 transition-all duration-1000 ease-out"
+      className="flex flex-row items-center bg-dark-gray m-4 rounded-2xl shadow-sm shadow-light-purple z-10 -translate-x-24 opacity-0 transition-all duration-1000 ease-out"
     >
       <div className="flex flex-col justify-center text-center p-2 w-full">
         <div className="text-center">
@@ -159,33 +186,12 @@ export function ProjectContainer({ id, name, link, icons, content, images }) {
               </div>
             </div>
           </div>
-          <div className="flex justify-center p-2 mt-2 md:mt-3">
-            {hovered.bool === true && (
-              <div className="z-30 text-light-blue text-sm lg:text-base absolute right-auto bottom-20 p-1 bg-normal-gray rounded-md drop-shadow-lg">
-                {icons[hovered.index].text}
-              </div>
-            )}
-            <ul className="flex flex-row">
-              {icons.map((icon) => (
-                <div key={icon.id} className="last-of-type:border-0">
-                  <li>
-                    <img
-                      onMouseEnter={() =>
-                        setHovered({ bool: true, index: icon.id })
-                      }
-                      onMouseLeave={() =>
-                        setHovered({ bool: false, index: -1 })
-                      }
-                      className="mx-5 w-10 drop-shadow-sm hover:scale-110 transition-transform duration-150 will-change-transform"
-                      src={icon.icon}
-                      alt={icon.name}
-                      title={icon.name}
-                    />
-                  </li>
-                </div>
-              ))}
-            </ul>
-          </div>
+          <button
+            onClick={() => togglePopup(popupcontent)}
+            className="flex justify-self-center mx-auto w-fit my-4 bg-light-blue rounded-lg px-2 py-1 cursor-pointer hover:bg-light-purple"
+          >
+            tech stack
+          </button>
         </div>
       </div>
     </div>

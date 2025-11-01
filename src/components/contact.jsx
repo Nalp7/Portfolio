@@ -7,7 +7,7 @@ import mail_w from "../assets/icons/mail-w.png";
 export function Contact({ conLinks }) {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center mb-[5vh] md:mb-[10vh] mt-[10vh] md:mt-[20vh] scroll-m-36">
-      <div id="contact">
+      <div id="contact" className="scroll-m-36">
         <h2 className="text-4xl md:text-5xl md:text-end mb-5 md:mb-0 md:mr-10 font-bold font-mono text-light-purple">
           contact <br className="hidden md:block" />
           me

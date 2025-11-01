@@ -12,12 +12,11 @@ export function Navbar({ currentPage, setCurrentPage }) {
   const navItems = [
     { id: 1, name: "Projects", path: "#projects" },
     { id: 2, name: "About", path: "#about" },
-    { id: 3, name: "AI", path: "#chat" },
-    { id: 4, name: "Contact", path: "#contact" },
+    { id: 3, name: "Contact", path: "#contact" },
   ];
 
   return (
-    <div className="bg-dark-gray sticky top-[-1px] drop-shadow-lg z-20">
+    <div className="bg-dark-gray sticky -top-px drop-shadow-lg z-20">
       <div className="space-x-8 grid grid-cols-5 md:grid-cols-3 items-center w-full">
         <a
           href="#"

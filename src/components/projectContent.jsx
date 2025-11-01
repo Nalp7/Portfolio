@@ -8,7 +8,7 @@ import DASHYGON2 from "../assets/DASHYGON/DASHYGON-2.png";
 import DASHYGON3 from "../assets/DASHYGON/DASHYGON-3.png";
 import { div } from "framer-motion/client";
 
-export function ProjectContent() {
+export function ProjectContent({ togglePopup }) {
   const projects = [
     {
       id: 1,
@@ -87,6 +87,7 @@ export function ProjectContent() {
               icons={project.icons}
               content={project.content}
               images={project.images}
+              togglePopup={togglePopup}
             />
           </div>
         ))}

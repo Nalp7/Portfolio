@@ -6,6 +6,8 @@ import { About } from "./about";
 import { Motivation } from "./motivation";
 import { Contact } from "./contact";
 import { Chat } from "./chat";
+import { Popup } from "./popup";
+import chat_p from "../assets/icons/chat-p.png";
 import github_w from "../assets/icons/github-w.svg";
 import itchio_w from "../assets/icons/itchio-w.svg";
 import linkedin_w from "../assets/icons/linkedin-w.svg";
@@ -16,6 +18,8 @@ import react from "../assets/icons/react.png";
 import vite from "../assets/icons/vite.png";
 import godot from "../assets/icons/godot.png";
 import csharp from "../assets/icons/csharp.png";
+import { p } from "framer-motion/client";
+import { time } from "framer-motion";
 
 export function HomeContent() {
   const conLinks = [
@@ -73,6 +77,8 @@ export function HomeContent() {
 
   const elementsToObserve = useRef([]);
 
+  const [popupContent, setPopupContent] = useState();
+
   function addToRefs(element) {
     if (element && !elementsToObserve.current.includes(element)) {
       elementsToObserve.current.push(element);
@@ -117,70 +123,100 @@ export function HomeContent() {
       window.history.scrollRestoration = "auto";
     }
   }, []);
+
+  function toggleChat() {
+    var chatIcon = document.querySelector("#chatIcon");
+    chatIcon.classList.toggle("opacity-100");
+    chatIcon.classList.toggle("opacity-0");
+    var chat = document.querySelector("#chatContainer");
+    chat.classList.toggle("opacity-0");
+    chat.classList.toggle("scale-0");
+    chat.classList.toggle("-right-100");
+    chat.classList.toggle("right-5");
+    chat.classList.toggle("-bottom-30");
+    chat.classList.toggle("bottom-5");
+  }
+
+  function togglePopup(content) {
+    content != null ? setPopupContent(content) : null;
+    var popup = document.querySelector("#popup");
+    var popupContainer = document.querySelector("#popupContainer");
+    popupContainer.classList.toggle("opacity-0");
+    popupContainer.classList.toggle("opacity-100");
+  }
+
   return (
-    <div className="flex flex-col items-center justify-around">
+    <>
       <div
-        ref={addToRefs}
-        className="opacity-0 -translate-y-16 duration-1000 ease-out transition-all"
+        id="popupContainer"
+        className="fixed top-1/2 left-1/2 -translate-1/2 z-100 w-[calc(100vw-50px)] sm:w-[calc(100vw-150px)] md:w-[calc(100vw-200px)] opacity-0 transition-opacity duration-400 ease-in-out"
       >
-        <Title />
+        <Popup togglePopup={togglePopup} content={popupContent} />
       </div>
+      <div className="flex flex-col items-center justify-around">
+        <div
+          ref={addToRefs}
+          className="opacity-0 -translate-y-16 duration-1000 ease-out transition-all"
+        >
+          <Title />
+        </div>
+        <div
+          ref={addToRefs}
+          className="mt-[25vh] opacity-0 translate-y-16 duration-1000 ease-out animate-pulse hover:animate-none transition-all"
+        >
+          <ArrowDown href="#about" />
+        </div>
+        <div className="flex flex-col mb-[10vh] md:max-w-[90vw] mx-5 md:mx-0">
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 duration-1000 ease-out transition-all"
+          >
+            <About />
+          </div>
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 duration-1000 ease-out transition-all"
+          >
+            <Motivation />
+          </div>
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+          >
+            <ArrowDown href="#projects" />
+          </div>
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+          >
+            <ProjectContent togglePopup={togglePopup} />
+          </div>
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+          >
+            <ArrowDown href="#contact" />
+          </div>
+          <div
+            ref={addToRefs}
+            className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
+          >
+            <Contact conLinks={conLinks} />
+          </div>
+        </div>
+      </div>
+      <img
+        id="chatIcon"
+        src={chat_p}
+        onClick={toggleChat}
+        className="scale-x-[-1] fixed opacity-100 bottom-5 right-5 w-16 p-2 rounded-2xl hover:cursor-pointer hover:scale-x-[-1.1] hover:scale-110 transition-all duration-400"
+      />
       <div
-        ref={addToRefs}
-        className="mt-[25vh] opacity-0 translate-y-16 duration-1000 ease-out animate-pulse hover:animate-none transition-all"
+        id="chatContainer"
+        className="fixed h-fit -bottom-30 -right-100 opacity-0 scale-0 duration-400 ease-in-out transition-all"
       >
-        <ArrowDown href="#about" />
+        <Chat toggleChat={toggleChat} />
       </div>
-      <div className="flex flex-col mb-[10vh] md:max-w-[90vw] mx-5 md:mx-0">
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 duration-1000 ease-out transition-all"
-        >
-          <About />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 duration-1000 ease-out transition-all"
-        >
-          <Motivation />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <ArrowDown href="#projects" />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <ProjectContent />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <ArrowDown href="#chat" />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <Chat />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <ArrowDown href="#contact" />
-        </div>
-        <div
-          ref={addToRefs}
-          className="opacity-0 translate-y-16 transition-all duration-1000 ease-out"
-        >
-          <Contact conLinks={conLinks} />
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
