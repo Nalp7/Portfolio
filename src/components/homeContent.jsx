@@ -125,6 +125,7 @@ export function HomeContent() {
   }, []);
 
   function toggleChat() {
+    console.log("chat");
     var chatIcon = document.querySelector("#chatIcon");
     chatIcon.classList.toggle("opacity-100");
     chatIcon.classList.toggle("opacity-0");
@@ -134,18 +135,21 @@ export function HomeContent() {
   }
 
   function togglePopup(content) {
+    console.log("popup");
     content != null ? setPopupContent(content) : null;
     var popup = document.querySelector("#popup");
     var popupContainer = document.querySelector("#popupContainer");
     popupContainer.classList.toggle("opacity-0");
     popupContainer.classList.toggle("opacity-100");
+    popupContainer.classList.toggle("scale-0");
+    popupContainer.classList.toggle("scale-100");
   }
 
   return (
     <>
       <div
         id="popupContainer"
-        className="fixed top-1/2 left-1/2 -translate-1/2 z-100 w-[calc(100vw-50px)] sm:w-[calc(100vw-150px)] md:w-[calc(100vw-200px)] opacity-0 transition-opacity duration-400 ease-in-out"
+        className="fixed top-1/2 left-1/2 -translate-1/2 z-100 w-[calc(100vw-50px)] sm:w-[calc(100vw-150px)] md:w-[calc(100vw-200px)] opacity-0 scale-0 transition-all duration-400 ease-in-out"
       >
         <Popup togglePopup={togglePopup} content={popupContent} />
       </div>

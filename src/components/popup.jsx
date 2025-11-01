@@ -6,12 +6,11 @@ export function Popup({ togglePopup, content }) {
       id="popup"
       className="flex flex-col bg-dark-gray rounded-2xl drop-shadow-sm drop-shadow-light-purple p-6"
     >
-      <div
-        onClick={() => togglePopup(null)}
-        className="absolute top-1 right-4 text-3xl text-light-blue font-bold cursor-pointer hover:text-light-purple"
-      >
-        ╳
-      </div>
+      <button onClick={() => togglePopup(null)}>
+        <div className="absolute top-1 right-4 text-3xl text-light-blue font-bold cursor-pointer hover:text-light-purple">
+          ╳
+        </div>
+      </button>
       <div>{content}</div>
     </div>
   );

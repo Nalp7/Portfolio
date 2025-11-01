@@ -85,7 +85,7 @@ export function Chat({ toggleChat }) {
           <h1 className="text-2xl text-light-purple font-bold m-5">
             chat about me
           </h1>
-          <button onClick={toggleChat}>
+          <button onClick={toggleChat} className="w-fit h-fit">
             <h1 className="text-3xl text-light-blue font-bold mt-1 mr-2 cursor-pointer hover:text-light-purple">
               ╳
             </h1>
