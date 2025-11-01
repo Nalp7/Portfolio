@@ -87,7 +87,7 @@ export function Chat({ toggleChat }) {
           </h1>
           <h1
             onClick={toggleChat}
-            className="text-3xl text-light-blue font-bold mr-2 cursor-pointer hover:text-light-purple"
+            className="text-3xl text-light-blue font-bold mt-1 mr-2 cursor-pointer hover:text-light-purple"
           >
             ╳
           </h1>
@@ -139,7 +139,7 @@ export function Chat({ toggleChat }) {
                 />
                 <label
                   htmlFor="messageInput"
-                  className="absolute text-[0.7rem] md:text-[0.8rem] text-light-blue origin-[0] left-10 z-10 -translate-y-5 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5 duration-300 transform transition-all"
+                  className="absolute text-[0.7rem] md:text-[0.8rem] text-light-blue origin-[0] left-10 z-10 translate-y-0 peer-placeholder-shown:-translate-y-[25px] peer-focus:-translate-y-[25px] peer duration-300 transform transition-all"
                 >
                   ask me
                 </label>

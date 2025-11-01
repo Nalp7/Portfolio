@@ -129,12 +129,8 @@ export function HomeContent() {
     chatIcon.classList.toggle("opacity-100");
     chatIcon.classList.toggle("opacity-0");
     var chat = document.querySelector("#chatContainer");
-    chat.classList.toggle("opacity-0");
     chat.classList.toggle("scale-0");
-    chat.classList.toggle("-right-100");
-    chat.classList.toggle("right-5");
-    chat.classList.toggle("-bottom-30");
-    chat.classList.toggle("bottom-5");
+    chat.classList.toggle("opacity-0");
   }
 
   function togglePopup(content) {
@@ -213,7 +209,7 @@ export function HomeContent() {
       />
       <div
         id="chatContainer"
-        className="fixed h-fit -bottom-30 -right-100 opacity-0 scale-0 duration-400 ease-in-out transition-all"
+        className="fixed h-fit bottom-5 right-5 scale-0 opacity-0 duration-400 ease-out transition-all origin-bottom-right"
       >
         <Chat toggleChat={toggleChat} />
       </div>
